@@ -6,7 +6,7 @@
 /*   By: akoutsou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:59:49 by akoutsou          #+#    #+#             */
-/*   Updated: 2023/02/02 16:50:23 by akoutsou         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:14:58 by akoutsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,21 @@ typedef struct s_stack
 typedef struct s_stackdetail
 {
 	int			half_to_b;
+	int			a_is_swap;
+	int			b_is_swap;
 	int			bot_a;
 	int			top_a;
 	int			bot_b;
 	int			top_b;
 	int			is_ordered;
+	t_len		len;
 
 }	t_stackdetail;
 
 void	ft_push_swap(char **str, int count);
 void	ft_phase_one(t_stack stack,t_stackdetail *details, int count);
-void	ft_phase_two(t_stack *stack,t_stackdetail details, t_len *len);
-void	ft_phase_three(t_stack stack,t_stackdetail details);
+void	ft_phase_two(t_stack *stack,t_stackdetail details);
+void	ft_phase_three(t_stack *stack,t_stackdetail *details);
 void	ft_phase_four(t_stack stack,t_stackdetail details);
 void	swap(int* a, int* b);
 void	quickSort(int *arr, int low, int high);
@@ -68,10 +71,10 @@ void	ft_rrb(t_stack *stack, t_len *len, int flg);
 void	ft_rra(t_stack *stack, t_len *len, int flg);
 void	ft_rrr(t_stack *stack, t_len *len);
 void	ft_sa(t_stack *stack, int flg);
-void	ft_sa(t_stack *stack, int flg);
+void	ft_sb(t_stack *stack, int flg);
 void	ft_ss(t_stack *stack);
 void	ft_putstr(char *str);
-void	ft_check_swap_dist(t_stack *stack,t_stackdetails *details);
+void	ft_check_swap_dist(t_stack *stack,t_stackdetail *details);
 void	ft_swap_moves(t_stack *stack,t_stackdetail *details);
 void	ft_rotate_moves(t_stack *stack,t_stackdetail *details);
 void	ft_check_orders(t_stack *stack,t_stackdetail *details);

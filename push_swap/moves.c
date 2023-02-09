@@ -90,7 +90,7 @@ void ft_rrr(t_stack *stack, t_len *len)
 
 void ft_sa(t_stack *stack, int flg)
 {
-	int *swap;
+	int swap;
 	
 	swap = stack->a[0];
 	stack->a[0] = stack->a[1];
@@ -99,9 +99,9 @@ void ft_sa(t_stack *stack, int flg)
 		ft_putstr("sa\n");
 }
 
-void ft_sa(t_stack *stack, int flg)
+void ft_sb(t_stack *stack, int flg)
 {
-	int *swap;
+	int swap;
 	
 	swap = stack->a[0];
 	stack->b[0] = stack->b[1];
