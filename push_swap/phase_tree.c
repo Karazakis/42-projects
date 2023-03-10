@@ -77,10 +77,14 @@ void ft_check_swp(t_stack *stack,t_stackdetail *details)
 	last_a = ft_highest(stack->a, details->len.a);
 	last_b = ft_highest(stack->b, details->len.b);
 	
-	if (stack->a[0] == last_a && stack->a[0] > stack->a[1])
+	if (stack->a[0] != last_a && stack->a[0] > stack->a[1])
 		details->a_is_swap = 1;
-	if (stack->b[0] == last_b && stack->b[0] > stack->b[1])
+	else
+		details->a_is_swap = 0;
+	if (stack->b[0] != last_b && stack->b[0] > stack->b[1])
 		details->b_is_swap = 1;
+	else
+		details->b_is_swap = 0;
 }
 
 void ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int highest)
@@ -90,7 +94,7 @@ void ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int hi
 	
 	flg = 1;
 	i = 0;
-	while (flg == 1)
+	while (flg == 1 && ((i != details->len.a && to_stack == 1) || (i != details->len.b - 1 && to_stack == 2)))
 	{
 		if (stack[i] > stack[i + 1] && stack[i] != highest)
 		{
@@ -101,6 +105,13 @@ void ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int hi
 			flg = 0;
 		}
 		i++;
+	}
+	if (flg == 1)
+	{
+		if (to_stack == 1)
+			details->top_a = 0;
+		else
+			details->top_b = 0;
 	}
 }
 
@@ -115,8 +126,8 @@ void ft_check_rotate_bot(int *stack,t_stackdetail *details, int to_stack, int hi
 		i = details->len.a - 1;
 	else
 		i = details->len.b - 1;
-	distance = 0;
-	if (stack[0] < stack[i])
+	distance = 2;
+	if (stack[0] < stack[i] && stack[i] != highest)
 	{
 		flg = 0;
 		if (to_stack == 1)
@@ -126,12 +137,12 @@ void ft_check_rotate_bot(int *stack,t_stackdetail *details, int to_stack, int hi
 	}
 	while (flg == 1)
 	{
-		if (stack[i] > stack[i + 1])
+		if (stack[i - 1] > stack[i] && stack[i - 1] != highest)
 		{
 			if (to_stack == 1)
-				details->top_a = i;
+				details->bot_a = distance;
 			else
-				details->top_b = i;
+				details->bot_b = distance;
 			flg = 0;
 		}
 		distance++;
@@ -142,10 +153,10 @@ void ft_check_rotate_bot(int *stack,t_stackdetail *details, int to_stack, int hi
 int ft_check_if_swap(t_stackdetail details)
 {
 	if (details.a_is_swap == 1)
-		if (details.bot_a > 1 || details.top_a > 1)
+		if (details.bot_b > 1 || details.top_b > 1)
 			return (1);
 	if (details.b_is_swap == 1)
-		if (details.bot_b > 1 || details.top_b > 1)
+		if (details.bot_a > 1 || details.top_a > 1)
 			return (1);
 	return (0);
 }

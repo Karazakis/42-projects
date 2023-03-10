@@ -12,6 +12,7 @@ int ft_far_from_top(int *control_arr, t_stack *stack, int count, int half_to_b)
 			return (i);
 		i++;
 	}
+	return (0);
 }
 
 int ft_far_from_bot(int *control_arr, t_stack *stack, int count, int half_to_b)
@@ -26,6 +27,7 @@ int ft_far_from_bot(int *control_arr, t_stack *stack, int count, int half_to_b)
 			return (count - i);
 		i--;
 	}
+	return (0);
 }
 
 int ft_is_half(t_stack *stack, int half_to_b, int count)

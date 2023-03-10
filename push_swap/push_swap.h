@@ -6,7 +6,7 @@
 /*   By: akoutsou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:59:49 by akoutsou          #+#    #+#             */
-/*   Updated: 2023/03/06 16:16:27 by akoutsou         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:14:05 by akoutsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_stackdetail
 
 void	ft_push_swap(char **str, int count);
 void	ft_phase_one(t_stack stack,t_stackdetail *details, int count);
-void	ft_phase_two(t_stack *stack,t_stackdetail details);
+void	ft_phase_two(t_stack *stack,t_stackdetail *details);
 void	ft_phase_three(t_stack *stack,t_stackdetail *details);
 void	ft_phase_four(t_stack stack,t_stackdetail details);
 void	swap(int* a, int* b);
