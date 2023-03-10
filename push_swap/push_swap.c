@@ -87,10 +87,10 @@ void	ft_push_swap(char **str, int count)
 		return;
 	ft_phase_two(&stack, details);
 	
-	printf("stack a\n");
-	ft_print_stack(stack.a, details.len.a);
+	ft_phase_three(&stack, &details);
 	printf("stack b\n");
 	ft_print_stack(stack.b, details.len.b);
-	ft_phase_three(&stack, &details);
+	printf("stack a\n");
+	ft_print_stack(stack.a, details.len.a);
 	/*ft_phase_four(stack, details);*/
 }

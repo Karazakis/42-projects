@@ -68,7 +68,7 @@ int *ft_arr_cat_front(int *arr, int to_cat, int count)
 	i = 0;
 	cpy = (int *)malloc(sizeof(int) * count + 1);
 	cpy[0] = to_cat;
-	while (i <= count)
+	while (i <= count && count != 0)
 	{
 		cpy[i + 1] = arr[i];
 		i++;

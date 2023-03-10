@@ -6,7 +6,7 @@
 /*   By: akoutsou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:59:49 by akoutsou          #+#    #+#             */
-/*   Updated: 2023/02/09 15:14:58 by akoutsou         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:16:27 by akoutsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,12 @@ void	ft_putstr(char *str);
 void	ft_check_swap_dist(t_stack *stack,t_stackdetail *details);
 void	ft_swap_moves(t_stack *stack,t_stackdetail *details);
 void	ft_rotate_moves(t_stack *stack,t_stackdetail *details);
-void	ft_check_orders(t_stack *stack,t_stackdetail *details);
+void	ft_check_swp(t_stack *stack,t_stackdetail *details);
+void	ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int highest);
+void	ft_check_rotate_bot(int *stack,t_stackdetail *details, int to_stack, int highest);
+int		ft_highest(int *stack, int len);
+int		ft_check_orders(t_stack *stack,t_stackdetail *details);
+int		ft_check_if_swap(t_stackdetail details);
 int		ft_check_move_cat(t_stackdetail *details);
 int		*ft_arr_cat(int *arr, int to_cat, int count, int side);
 int		*ft_arr_cat_front(int *arr, int to_cat, int count);
@@ -93,3 +98,6 @@ int		ft_far_from_bot(int *control_arr, t_stack *stack, int count, int half_to_b)
 int		ft_far_from_top(int *control_arr, t_stack *stack, int count, int half_to_b);
 int		ft_is_half(t_stack *stack, int half_to_b, int count);
 int		ft_is_frombot(t_stack *stack, int half_to_b, int count);
+int		ft_check_rotate_comb(t_stack *stack,t_stackdetail *details);
+
+
