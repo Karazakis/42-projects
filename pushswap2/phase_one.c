@@ -64,7 +64,7 @@ void ft_check_last_quart(t_stack stack, t_count *counter, int count)
 		start = 2;
 	end = count - 1;
 	control_arr = ft_arr_cpy(stack.a, count);
-	quickSort(control_arr, 0, count);
+	quickSort(control_arr, 0, count - 1);
 	while(start <= end)
 	{
 		if (ft_is_first(control_arr, stack.a[start], count) == 1)

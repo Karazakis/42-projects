@@ -6,7 +6,7 @@
 /*   By: akoutsou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:59:49 by akoutsou          #+#    #+#             */
-/*   Updated: 2023/03/16 15:30:15 by akoutsou         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:08:47 by akoutsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int		*ft_arr_cpy(int *arr, int count);
 int		ft_arrlen(int *arr);
 int		ft_check_order(int *stack, int count);
 int		ft_is_first(int *arr, int to_check, int count);
-int		ft_far_from_bot(int *control_arr, t_stack *stack, int count, int half_to_b);
-int		ft_far_from_top(int *control_arr, t_stack *stack, int count, int half_to_b);
+int		ft_far_from_bot(int *control_arr, t_stack *stack, t_len len, int half_to_b);
+int		ft_far_from_top(int *control_arr, t_stack *stack, t_len len, int half_to_b);
 int		ft_is_half(t_stack *stack, int half_to_b, int count);
 int		ft_is_frombot(t_stack *stack, int half_to_b, t_stackdetail *details);
 int		ft_check_rotate_comb(t_stack *stack,t_stackdetail *details);

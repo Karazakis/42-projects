@@ -96,7 +96,7 @@ void ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int hi
 	i = 0;
 	while (flg == 1 && ((i != details->len.a && to_stack == 1) || (i != details->len.b - 1 && to_stack == 2)))
 	{
-		if (stack[i] > stack[i + 1] && stack[i] != highest)
+		if (stack[i] > stack[i + 1] && stack[i] != highest && )
 		{
 			if (to_stack == 1)
 				details->top_a = i;

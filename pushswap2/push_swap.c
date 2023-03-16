@@ -11,19 +11,24 @@ void	ft_phase_one(t_stack stack, t_stackdetail *details, int count)
 		return;
 	}
 	counter = malloc(sizeof(int) * 2);
+	counter->first = 0;
+	counter->second = 0;
 	ft_check_first_quart(stack, counter, count);
 	ft_check_last_quart(stack, counter, count);
 	if (counter->first >= counter->second)
 	{
+		free(counter);
 		details->half_to_b = 1;
 		return;
 	}
 	else 
 	{
+		free(counter);
 		details->half_to_b = 2;
 		return;
 	}
 }
+
 
 void	ft_phase_two(t_stack *stack, t_stackdetail *details)
 {
@@ -37,13 +42,16 @@ void	ft_phase_two(t_stack *stack, t_stackdetail *details)
 		halflen = (details->len.a / 2) + (details->len.a % 2);
 	else
 		halflen = details->len.a / 2;
-	stack->ordered = ft_arr_cpy(stack->a, count);
+	stack->ordered = ft_arr_cpy(stack->a, details->len.a + 1);
 	quickSort(stack->ordered, 0, count - 1);
 	while (moves < halflen)
 	{
+		printf("pre stack a len %d\n", details->len.a);
+		ft_print_stack(stack->a, details->len.a);
+		printf("pre stack b len %d\n", details->len.b);
+		ft_print_stack(stack->b, details->len.b);
 		if (ft_is_half(stack, details->half_to_b, details->len.ordered_len) == 1)
 		{
-			printf("ciao\n");
 			ft_pb(stack, &details->len);
 			moves++;
 		}
@@ -51,16 +59,20 @@ void	ft_phase_two(t_stack *stack, t_stackdetail *details)
 			ft_ra(stack, &details->len, 0);
 		else
 			ft_rra(stack, &details->len, 0);
+		printf("post stack a len %d\n", details->len.a);
+		ft_print_stack(stack->a, details->len.a);
+		printf("post stack b len %d\n", details->len.b);
+		ft_print_stack(stack->b, details->len.b);
 	}
 }
 
-void	ft_phase_three(t_stack *stack,t_stackdetail *details)
+/*void	ft_phase_three(t_stack *stack,t_stackdetail *details)
 {
 	int i;
 	
 	i = 0;
 	
-	while (i != 3/*details->is_ordered != 1*/)
+	while (details->is_ordered != 1)
 	{
 		ft_check_swap_dist(stack, details);
 		printf("is swap a %d swap dist %d from bot from top %d\n", details->a_is_swap, details->bot_a, details->top_a);
@@ -71,11 +83,10 @@ void	ft_phase_three(t_stack *stack,t_stackdetail *details)
 			ft_swap_moves(stack, details);
 		else
 			ft_rotate_moves(stack, details);
-		//details->is_ordered = 1;
-		//details->is_ordered = ft_check_orders(stack, details);
+		details->is_ordered = ft_check_orders(stack, details);
 		i++;
 	}
-}
+}*/
 
 /*void	ft_phase_four(t_stack stack, t_stackdetail details)
 {
@@ -97,16 +108,14 @@ void	ft_push_swap(char **str, int count)
 	if (details.is_ordered == 1)
 		return;
 	ft_phase_two(&stack, &details);
-	printf("fase 2 stack a\n");
+	//ft_phase_three(&stack, &details);
+	/*printf("fase 3 stack a\n");
 	ft_print_stack(stack.a, details.len.a);
-	
 	printf("fase 2 stack b\n");
-	ft_print_stack(stack.b, details.len.b);
-	/*ft_phase_three(&stack, &details);
-	printf("fase 3 stack a\n");
-	ft_print_stack(stack.a, details.len.a);
-	
-	printf("fase 3 stack b\n");
 	ft_print_stack(stack.b, details.len.b);*/
+	
+	free(stack.a);
+	free(stack.b);
+	free(stack.ordered);
 	/*ft_phase_four(stack, details);*/
 }

@@ -40,12 +40,12 @@ int ft_is_half(t_stack *stack, int half_to_b, int count)
 		return (0);
 }
 
-int ft_is_frombot(t_stack *stack, int half_to_b, int count)
+int ft_is_frombot(t_stack *stack, int half_to_b, t_stackdetail *details)
 {
 	t_count counter;
 	
-	counter.first = ft_far_from_top(stack->ordered, stack, count, half_to_b);
-	counter.second = ft_far_from_bot(stack->ordered, stack, count, half_to_b);
+	counter.first = ft_far_from_top(stack->ordered, stack, details->len.ordered_len, half_to_b);
+	counter.second = ft_far_from_bot(stack->ordered, stack, details->len.ordered_len, half_to_b);
 	if(counter.first <= counter.second)
 		return (1);
 	else
