@@ -33,9 +33,13 @@ int ft_far_from_bot(int *control_arr, t_stack *stack, t_len len, int half_to_b)
 int ft_is_half(t_stack *stack, int half_to_b, int count)
 {
 	if ((ft_is_first(stack->ordered, stack->a[0], count) == 1) && (half_to_b == 1))
+	{
 		return(1);
+	}
 	else if((ft_is_first(stack->ordered, stack->a[0], count) == 0) && (half_to_b == 2))
+	{
 		return(1);
+	}
 	else
 		return (0);
 }

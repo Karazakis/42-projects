@@ -21,7 +21,7 @@ int *ft_takelist(char **str, int count)
 	int i;
 	
 	i = 1;
-	stack = (int *)malloc(sizeof(int) * count);
+	stack = (int *)malloc(sizeof(int) * count + 1);
 	while(i <= count)
 	{
 		stack[i - 1] = ft_atoi(str[i]);

@@ -6,7 +6,7 @@
 /*   By: akoutsou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:59:49 by akoutsou          #+#    #+#             */
-/*   Updated: 2023/03/16 18:08:47 by akoutsou         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:58:58 by akoutsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_push_swap(char **str, int count);
 void	ft_phase_one(t_stack stack,t_stackdetail *details, int count);
 void	ft_phase_two(t_stack *stack,t_stackdetail *details);
 void	ft_phase_three(t_stack *stack,t_stackdetail *details);
-void	ft_phase_four(t_stack stack,t_stackdetail details);
+void	ft_phase_four(t_stack *stack,t_stackdetail *details);
 void	swap(int* a, int* b);
 void	quickSort(int *arr, int low, int high);
 void	ft_print_stack(int *stack, int count);
@@ -80,6 +80,7 @@ void	ft_rotate_moves(t_stack *stack,t_stackdetail *details);
 void	ft_check_swp(t_stack *stack,t_stackdetail *details);
 void	ft_check_rotate_top(int *stack,t_stackdetail *details, int to_stack, int highest);
 void	ft_check_rotate_bot(int *stack,t_stackdetail *details, int to_stack, int highest);
+void	ft_check_high_dist(t_stack *stack,t_stackdetail *details);
 int		ft_highest(int *stack, int len);
 int		ft_check_orders(t_stack *stack,t_stackdetail *details);
 int		ft_check_if_swap(t_stackdetail details);
@@ -99,5 +100,10 @@ int		ft_far_from_top(int *control_arr, t_stack *stack, t_len len, int half_to_b)
 int		ft_is_half(t_stack *stack, int half_to_b, int count);
 int		ft_is_frombot(t_stack *stack, int half_to_b, t_stackdetail *details);
 int		ft_check_rotate_comb(t_stack *stack,t_stackdetail *details);
+int		ft_check_order_full(int *stack, int count);
+int		ft_check_orders_full(t_stack *stack,t_stackdetail *details);
+int		ft_check_high_bot(int *stack, int len);
+int		ft_check_high_top(int *stack, int len);
+int		ft_high_is_top(t_stackdetail *details, int side);
 
 

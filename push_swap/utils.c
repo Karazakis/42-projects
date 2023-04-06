@@ -40,7 +40,7 @@ int *ft_arr_cpy(int *arr, int count)
 	int i;
 	
 	i = 0;
-	cpy = (int *)malloc(sizeof(int) * count);
+	cpy = (int *)malloc(sizeof(int) * (count + 1));
 	while (i < count)
 	{
 		cpy[i] = arr[i];
@@ -66,11 +66,9 @@ int *ft_arr_cat_front(int *arr, int to_cat, int count)
 	int i;
 	
 	i = 0;
-	cpy = (int *)malloc(sizeof(int) * count + 1);
+	cpy = (int *)malloc(sizeof(int) * (count + 1));
 	cpy[0] = to_cat;
-	if (count == 1)
-		count++;
-	while (i < count - 1 && count != 0)
+	while (i < count && count != 0)
 	{
 		cpy[i + 1] = arr[i];
 		i++;
@@ -84,7 +82,7 @@ int *ft_arr_cat_tail(int *arr, int to_cat, int count)
 	int i;
 	
 	i = 0;
-	cpy = (int *)malloc(sizeof(int) * count);
+	cpy = (int *)malloc(sizeof(int) * (count + 1));
 	while (i < count)
 	{
 		cpy[i] = arr[i];

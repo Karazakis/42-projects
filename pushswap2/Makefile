@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = main.c utils.c push_swap.c push_swap_input.c phase_one.c phase_two.c quick_sort.c moves.c moves_utils.c
+SRC = main.c utils.c push_swap.c push_swap_input.c phase_one.c phase_two.c phase_tree.c phase_four.c quick_sort.c moves.c moves_utils.c
 OBJ = $(SRC:.c=.o)
 FLAGS = -g
 

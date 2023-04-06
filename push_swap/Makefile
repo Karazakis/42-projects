@@ -1,7 +1,7 @@
 NAME = push_swap
-SRC = main.c push_swap.c quick_sort.c push_swap_input.c utils.c phase_one.c phase_two.c phase_tree.c moves.c moves_utils.c
+SRC = main.c utils.c push_swap.c push_swap_input.c phase_one.c phase_two.c phase_tree.c moves.c moves_utils.c phase_two_utils.c lis_utils.c
 OBJ = $(SRC:.c=.o)
-FLAGS =  -g
+FLAGS = -g
 
 all: $(NAME)
 

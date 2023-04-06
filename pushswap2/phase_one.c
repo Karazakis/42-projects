@@ -3,11 +3,14 @@
 int ft_check_order(int *stack, int count)
 {
 	int i;
+	int high;
 	
+	
+	high = ft_highest(stack, count);
 	i = 0;
 	while(i + 1 < count)
 	{
-		if (stack[i] > stack[i + 1])
+		if (stack[i] > stack[i + 1] && stack[i] != high)
 			return(0);
 		i++;
 	}
@@ -19,7 +22,7 @@ int ft_is_first(int *arr, int to_check, int count)
 	int i;
 	
 	i = 0;
-	while(i < (count / 2) - 1)
+	while(i < (count / 2))
 	{
 		if (arr[i] == to_check)
 			return(1);

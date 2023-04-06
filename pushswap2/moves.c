@@ -103,7 +103,7 @@ void ft_sb(t_stack *stack, int flg)
 {
 	int swap;
 	
-	swap = stack->a[0];
+	swap = stack->b[0];
 	stack->b[0] = stack->b[1];
 	stack->b[1] = swap;
 	if (flg == 0)
