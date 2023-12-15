@@ -1,0 +1,131 @@
+version: '3.9'
+
+services:
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    networks:
+      - rete-docker
+    volumes:
+      - ./nginx/config/:/etc/nginx/http.d/
+      - ./nginx/ssl/:/etc/nginx/ssl/
+      - wordpress-data:/var/www/
+    restart: always
+
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    ports:
+      - "9000:9000"
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+    networks:
+      - rete-docker
+    volumes:
+      - wordpress-data:/var/www/html
+    restart: always
+
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_ROOT: ${DB_ROOT}
+    networks:
+      - rete-docker
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    restart: always
+
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - rete-docker
+    restart: always
+
+  vsftpd:
+    build: 
+      context: .
+      dockerfile: requirements/bonus/vsftpd/Dockerfile
+      args:
+        FTP_USR: ${FTP_USR}
+        FTP_PWD: ${FTP_PWD}
+    container_name: vsftpd
+    ports:
+      - "21:21"
+    volumes:
+      - wordpress-data:/var/www/
+    networks:
+      - rete-docker
+    restart: always
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    container_name: adminer
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:8080"
+    networks:
+      - rete-docker
+    restart: always
+
+  website:
+    build: ./requirements/bonus/website
+    container_name: website
+    networks:
+      - rete-docker
+    ports:
+      - "82:82"
+    restart: always
+
+  portainer:
+    build: ./requirements/bonus/portainer
+    container_name: portainer
+    ports:
+      - 9224:9224
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - rete-docker
+    restart: always
+
+volumes:
+  wordpress-data:
+    driver_opts:
+      o: bind
+      type: none
+      device: /${USER}/data/wordpress
+
+  mariadb-data:
+    driver_opts:
+      o: bind
+      type: none
+      device: /${USER}/data/mariadb-data
+
+  portainer_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /${USER}/data/prt
+
+networks:
+  rete-docker:
+    driver: bridge
